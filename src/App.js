@@ -65,11 +65,19 @@ class App extends Component {
   }
 
   // METHODS
+
+  // show Markers depending on the search query
   searchForVenues (searchQuery) {
+
+    // go through each marker show only those that include the search query in their names
+    this.markers.forEach( marker => {
+      marker.name.toLowerCase().includes(searchQuery.toLowerCase()) ? marker.setVisible(true) : marker.setVisible(false);
+    });
+    
+    // set state
     this.setState({
       query: searchQuery
     });
-    console.log (searchQuery);
   }
 
 
