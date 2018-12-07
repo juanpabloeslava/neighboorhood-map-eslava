@@ -8,6 +8,14 @@ import { loadGoogleMaps, loadPlaces } from './utils'
 
 class App extends Component {
 
+  constructor (props) {
+    super(props);
+    // state
+    this.state = {
+      query: ""
+    }
+  }
+
   componentDidMount() {
     // get the map and locations
     let google_map_promise = loadGoogleMaps();
@@ -49,18 +57,33 @@ class App extends Component {
           // push each marker to the Marker property on the component
           this.markers.push(marker);
         });
-        console.log ('those markers', this.markers)
+        console.log('those markers', this.markers)
       })
       .catch(error => {
         console.log(error);
       })
   }
 
+  // METHODS
+  searchForVenues (searchQuery) {
+    this.setState({
+      query: searchQuery
+    });
+    console.log (searchQuery);
+  }
+
+
+  // RENDER
   render() {
     return (
       <div className="App">
         <Map />
-        <Sidebar />
+        {/* Sidebar */}
+        <div className="sidebar" id="sidebar">
+          <input 
+            value={this.state.query} 
+            onChange={ event => { this.searchForVenues(event.target.value) } }/>
+        </div>
       </div>
     );
   }
