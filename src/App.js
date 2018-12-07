@@ -22,17 +22,18 @@ class App extends Component {
         // store each returned promise into its own variable
         let google = resp[0];
         let venues = resp[1].response.venues;
-        console.log('google: ', google);
-        console.log('venues: ', venues);
 
         // Component Properties (map, google, markers, etc)
         this.google = google;
+        this.infoWindow = new google.maps.InfoWindow();
+        this.markers = [];
         this.map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
+          zoom: 14,
           scrollwheel: true,
+          // base the center on the venues received
           center: { lat: venues[0].location.lat, lng: venues[0].location.lng }
         });
-        this.markers = []
+
         // venues
         venues.forEach(venue => {
           // create a marker for each venue
@@ -44,7 +45,10 @@ class App extends Component {
             name: venue.name,
             animation: google.maps.Animation.DROP
           });
+          // push each marker to the Marker property on the component
+          this.markers.push(marker);
         });
+        console.log ('those markers', this.markers)
       })
       .catch(error => {
         console.log(error);

@@ -1,5 +1,4 @@
 // Google Maps API things
-
 export function loadGoogleMaps() {
     return new Promise((resolve) => {
         // define the global callback that will run when google maps is loaded
@@ -19,14 +18,13 @@ export function loadGoogleMaps() {
 }
 
 // FourSquare things
-
 export function loadPlaces() {
-    let city = 'Miami, FL';
+    let city = 'Saarbrucken, Germany';
     let query = 'Restaurant';
     const MY_CLIENT_ID = 'HZIUFRTJYQEKW5K3CYVLKYROMWM4EMVT3HXNBG3PIRJWWLPK'
     const MY_CLIENT_SECRET = 'MKEFFYMS3255NVMSHVK4EZYMNOY5D3JFCCVQIBVGTTYS5EZJ'
     let MY_VERSION ='20181207'
-    // var apiURL = 'https://api.foursquare.com/v2/venues/search?client_id=N1IAMKZUIK1AUHKRFGFBKPQ2YKDSBAKS4NTER5SYZN5CROR1&client_secret=4MKLXVLU2FGZQVRMAEDC15P0TFJGSCY3ZUYUZ0KHQQQLQ5R3&v=20130815%20&limit=50&near=' + city + '&query=' + query + '';
+
     var apiURL = `https://api.foursquare.com/v2/venues/search?client_id=${MY_CLIENT_ID}&client_secret=${MY_CLIENT_SECRET}&v=${MY_VERSION}%20&limit=50&near=${city}&query=${query}`;
 
     return fetch(apiURL)
