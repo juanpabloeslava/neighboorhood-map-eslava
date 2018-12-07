@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './css/App.css';
 // components
-import Map from './components/map'
+import Map from './components/Map'
+import Sidebar from './components/Sidebar'
 // utils
 import { loadGoogleMaps, loadPlaces } from './utils'
 
@@ -59,6 +60,7 @@ class App extends Component {
     return (
       <div className="App">
         <Map />
+        <Sidebar />
       </div>
     );
   }
