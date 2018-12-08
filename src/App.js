@@ -8,11 +8,13 @@ import { loadGoogleMaps, loadPlaces } from './utils'
 
 class App extends Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     // state
     this.state = {
-      query: ""
+      query: "",
+      venues: [],
+      filteredVenues: null
     }
   }
 
@@ -30,21 +32,21 @@ class App extends Component {
         console.log('All promises were resolved on Component Mount: ', resp)
         // store each returned promise into its own variable
         let google = resp[0];
-        let venues = resp[1].response.venues;
-
-        // Component Properties (map, google, markers, etc)
+        
+        // Component Properties (venues, map, google, markers, etc)
+        this.venues = resp[1].response.venues;
         this.google = google;
         this.infoWindow = new google.maps.InfoWindow();
-        this.markers = [];
+        this.allMarkers = [];
         this.map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
           scrollwheel: true,
           // base the center on the venues received
-          center: { lat: venues[0].location.lat, lng: venues[0].location.lng }
+          center: { lat: this.venues[0].location.lat, lng: this.venues[0].location.lng }
         });
 
         // venues
-        venues.forEach(venue => {
+        this.venues.forEach(venue => {
           // create a marker for each venue
           let marker = new google.maps.Marker({
             position: { lat: venue.location.lat, lng: venue.location.lng },
@@ -54,10 +56,30 @@ class App extends Component {
             name: venue.name,
             animation: google.maps.Animation.DROP
           });
+          // show the infoWindows when clicking on a marker
+          google.maps.event.addListener(marker, 'click', () => {
+            this.infoWindow.setContent(marker.name);
+            // this.map.setZoom(13);
+            // this.map.setCenter(marker.position);
+            this.infoWindow.open(this.map, marker);
+            // this.map.panBy(0, -125);
+          });
+          // re-center map and show infoWindow when double clicking on a marker
+          google.maps.event.addListener(marker, 'dblclick', () => {
+            // this.infoWindow.setContent(marker.name);
+            this.map.setZoom(15);
+            this.map.setCenter(marker.position);
+            // this.infoWindow.open(this.map, marker);
+            this.map.panBy(0, -125);
+          });
           // push each marker to the Marker property on the component
-          this.markers.push(marker);
+          this.allMarkers.push(marker);
         });
-        console.log('those markers', this.markers)
+        this.setState( { venues: this.venues} );
+        // console.log('App.allMarkers: ', this.allMarkers)
+        console.log('App.allMarkers: ', this.allMarkers)
+        console.log('this.venues: ', this.venues)
+        console.log('this.state.venues: ', this.state.venues)
       })
       .catch(error => {
         console.log(error);
@@ -67,13 +89,11 @@ class App extends Component {
   // METHODS
 
   // show Markers depending on the search query
-  searchForVenues (searchQuery) {
-
-    // go through each marker show only those that include the search query in their names
-    this.markers.forEach( marker => {
+  searchForVenues(searchQuery) {
+    // go through each marker show only those that include the search query in their names and/or 
+    this.allMarkers.forEach(marker => {
       marker.name.toLowerCase().includes(searchQuery.toLowerCase()) ? marker.setVisible(true) : marker.setVisible(false);
     });
-    
     // set state
     this.setState({
       query: searchQuery
@@ -87,11 +107,17 @@ class App extends Component {
       <div className="App">
         <Map />
         {/* Sidebar */}
-        <div className="sidebar" id="sidebar">
-          <input 
-            value={this.state.query} 
-            onChange={ event => { this.searchForVenues(event.target.value) } }/>
-        </div>
+        <section className="sidebar" id="sidebar">
+          <input
+            className="search-field"
+            placeholder="Search Restaurants by name"
+            value={this.state.query}
+            onChange={ event => { this.searchForVenues(event.target.value) } } />
+            {
+              // Show a list of all the venues, that filters according to the search query
+              // this.state.venues && this.state.venues.length
+            }
+        </section>
       </div>
     );
   }
