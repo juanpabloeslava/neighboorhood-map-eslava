@@ -115,7 +115,15 @@ class App extends Component {
             onChange={ event => { this.searchForVenues(event.target.value) } } />
             {
               // Show a list of all the venues, that filters according to the search query
-              // this.state.venues && this.state.venues.length
+              <ul className="temp-venue-ul">
+                {this.state.venues && this.state.venues.length > 0 && (
+                  this.state.venues.map( venue => (
+                    <li className="temp-venue-li" key={venue.id}>
+                      {venue.name}
+                    </li>
+                  ))
+                )}
+              </ul>
             }
         </section>
       </div>

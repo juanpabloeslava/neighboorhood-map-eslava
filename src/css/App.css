@@ -136,6 +136,7 @@ body {
   top: 0;
   left: 0;
   display: flex;
+  flex-flow: column;
   padding: 15px;
 }
 
@@ -144,7 +145,7 @@ body {
   min-width: 90%;
   /* max-width: 90%; */
   padding: 0 8px;
-  height: 48px;
+  min-height: 48px;
   font-size: 15px;
   border-radius: 8px;
   margin-bottom: 12px;
@@ -216,4 +217,17 @@ body {
 @media (max-width: 475px) {
   #head-text {font-size: 1rem; padding: 0px 10px;}
   .menu-text {padding: 0px 10px;}
+}
+
+
+/* temporary JP */
+.temp-venue-ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+.temp-venue-li {
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  
 }
