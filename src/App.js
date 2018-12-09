@@ -84,7 +84,7 @@ class App extends Component {
             // focus on clicked infoWindow
             this.map.setZoom(15);
             this.map.setCenter(marker.position);
-            this.map.panBy(0, -125);
+            this.map.panBy(-100, -100);
           });
           // push each marker to the Marker property on the component
           this.allMarkers.push(marker);
@@ -157,14 +157,14 @@ class App extends Component {
     // focus on clicked infoWindow
     this.map.setZoom(15);
     this.map.setCenter(clickedMarker.position);
-    this.map.panBy(0, -125);
+    this.map.panBy(-100, -100);
   }
 
   // RENDER
   render() {
     return (
       <div className="App">
-        
+
         <Map />
         {/* Sidebar */}
         <Sidebar

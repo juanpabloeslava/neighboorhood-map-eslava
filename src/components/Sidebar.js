@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// components
+import ListVenueItem from './ListVenueItem'
 
 class Sidebar extends Component {
 
@@ -27,13 +29,21 @@ class Sidebar extends Component {
                     <ul className="temp-venue-ul">
                         {this.props.filteredVenues && this.props.filteredVenues.length > 0 && (
                             this.props.filteredVenues.map(venue => (
-                                <li
-                                    className="temp-venue-li"
+                                // Venue Item
+                                <ListVenueItem 
+                                    venue={venue}
                                     key={venue.id}
-                                    onClick={() => { this.props.venueClick(venue) }}
-                                    onDoubleClick={() => { this.props.venueDoubleclick(venue) }} >
-                                    {venue.name}
-                                </li>
+                                    // methods
+                                    venueClick={this.props.venueClick}
+                                    venueDoubleclick={this.props.venueDoubleclick}
+                                />
+                                // <li
+                                //     className="temp-venue-li"
+                                //     key={venue.id}
+                                //     onClick={() => { this.props.venueClick(venue) }}
+                                //     onDoubleClick={() => { this.props.venueDoubleclick(venue) }} >
+                                //     {venue.name}
+                                // </li>
                             ))
                         )}
                     </ul>
