@@ -39,6 +39,7 @@ class App extends Component {
         this.google = google;
         this.infoWindow = new google.maps.InfoWindow();
         this.allMarkers = [];
+        // create a google map instance
         this.map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
           scrollwheel: true,
@@ -57,20 +58,32 @@ class App extends Component {
             name: venue.name,
             animation: google.maps.Animation.DROP
           });
-          // show the infoWindows when clicking on a marker
+          // MARKER CLICK: show the infoWindows when clicking on a marker
           google.maps.event.addListener(marker, 'click', () => {
+            // handle animation: if there's any animation going on, stop it. If not, just animate
+            if (marker.getAnimation() !== null) { 
+              marker.setAnimation(null); 
+            } else { 
+              marker.setAnimation(google.maps.Animation.BOUNCE); 
+            }
+            setTimeout(() => { marker.setAnimation(null) }, 1000);
+            // set content for info window and open it
             this.infoWindow.setContent(marker.name);
-            // this.map.setZoom(13);
-            // this.map.setCenter(marker.position);
             this.infoWindow.open(this.map, marker);
-            // this.map.panBy(0, -125);
           });
-          // re-center map and show infoWindow when double clicking on a marker
+
+          // MARKER DOUBLE CLICK: re-center map and show infoWindow when double clicking on a marker
           google.maps.event.addListener(marker, 'dblclick', () => {
-            // this.infoWindow.setContent(marker.name);
+            // handle animation: if there's any animation going on, stop it. If not, just animate
+            if (marker.getAnimation() !== null) { 
+              marker.setAnimation(null); 
+            } else { 
+              marker.setAnimation(google.maps.Animation.BOUNCE); 
+            }
+            setTimeout(() => { marker.setAnimation(null) }, 1000);
+            // focus on clicked infoWindow
             this.map.setZoom(15);
             this.map.setCenter(marker.position);
-            // this.infoWindow.open(this.map, marker);
             this.map.panBy(0, -125);
           });
           // push each marker to the Marker property on the component
@@ -93,7 +106,7 @@ class App extends Component {
   // METHODS
 
   // show Markers depending on the search query
-  filterMyVenues(searchQuery) {
+  filterMyVenues = (searchQuery) => {
     // filter venues list on the sidebar
     let filteredVenues =  this.venues.filter( venue => (
       venue.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -109,6 +122,43 @@ class App extends Component {
     });
   }
 
+  // click on a venue on the list
+  venueClick = (venue) => {
+    // get clicked marker as the only/first result of a filtered array
+    let clickedMarker = this.allMarkers.filter( marker => {
+      return marker.id === venue.id
+    })[0];
+    // Open the venue's infowindow and animate the marker
+    // handle animation: if there's any animation going on, stop it. If not, just animate
+    if (clickedMarker.getAnimation() !== null) { 
+      clickedMarker.setAnimation(null); 
+    } else { 
+      clickedMarker.setAnimation(this.google.maps.Animation.BOUNCE); 
+    }
+    setTimeout(() => { clickedMarker.setAnimation(null) }, 1000);
+    // set content for info window and open it
+    this.infoWindow.setContent(clickedMarker.name);
+    this.infoWindow.open(this.map, clickedMarker);
+  }
+  // doubleclick on a venue on the list
+  venueDoubleclick = (venue) => {
+    // get clicked marker as the only/first result of a filtered array
+    let clickedMarker = this.allMarkers.filter( marker => {
+      return marker.id === venue.id
+    })[0];
+    // Open the venue's infowindow and animate the marker
+    // handle animation: if there's any animation going on, stop it. If not, just animate
+    if (clickedMarker.getAnimation() !== null) { 
+      clickedMarker.setAnimation(null); 
+    } else { 
+      clickedMarker.setAnimation(this.google.maps.Animation.BOUNCE); 
+    }
+    setTimeout(() => { clickedMarker.setAnimation(null) }, 1000);
+    // focus on clicked infoWindow
+    this.map.setZoom(15);
+    this.map.setCenter(clickedMarker.position);
+    this.map.panBy(0, -125);
+  }
 
   // RENDER
   render() {
@@ -127,7 +177,13 @@ class App extends Component {
               <ul className="temp-venue-ul">
                 {this.state.filteredVenues && this.state.filteredVenues.length > 0 && (
                   this.state.filteredVenues.map( venue => (
-                    <li className="temp-venue-li" key={venue.id}>
+                    <li 
+                    className="temp-venue-li" 
+                    key={venue.id}
+                    onClick={ () => { this.venueClick(venue) }} 
+                    onDoubleClick={ () => { this.venueDoubleclick(venue) }} 
+                    // onDoubleClick={this.venueDoubleClick(venue)}
+                    >
                       {venue.name}
                     </li>
                   ))
