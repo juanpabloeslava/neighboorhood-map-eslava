@@ -1,6 +1,6 @@
-// Google Maps API things
-export function loadGoogleMaps() {
-    return new Promise((resolve) => {
+// Google Maps
+export const loadGoogleMaps = () => {
+    return new Promise( resolve => {
         // define the global callback that will run when google maps is loaded
         window.resolveGoogleMapsPromise = function () {
             // resolve the google object
@@ -17,8 +17,28 @@ export function loadGoogleMaps() {
     });
 }
 
+// Google preview Image
+export const loadPreviewImage = (venue) => {
+    const MY_API_KEY = 'AIzaSyB2Na2itdrdjtju2_vV0W2QLDrPevufc8U';
+    const HEADING = '150';
+    const PITCH = '-0.75'
+    var that = 'https://maps.googleapis.com/maps/api/streetview?size=150x150&location=' 
+        + venue.location.lat + ',' 
+        + venue.location.lng 
+        + '&heading=151.78&pitch=-0.76&key=AIzaSyB6N63ZIGH4b8Hgm9KhodA87Guuiem3C8Y'
+
+    return `https://maps.googleapis.com/maps/api/streetview?size=150x150&location=
+    ${venue.location.lat},${venue.location.lng}
+    &heading=${HEADING}
+    &pitch=${PITCH}
+    &key=${MY_API_KEY}`;
+    
+}
+
+
+
 // FourSquare things
-export function loadPlaces() {
+export const loadPlaces = () => {
     let city = 'Saarbrucken, Germany';
     let query = 'Restaurant';
     const MY_CLIENT_ID = 'HZIUFRTJYQEKW5K3CYVLKYROMWM4EMVT3HXNBG3PIRJWWLPK'

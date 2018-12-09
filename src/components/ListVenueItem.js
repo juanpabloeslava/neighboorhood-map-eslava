@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// utils
+import { loadPreviewImage } from '../utils'
 
 class ListVenueItem extends Component {
 
@@ -12,6 +14,12 @@ class ListVenueItem extends Component {
             >
                 <div>
                     {this.props.venue.name}
+                </div>
+                <div>
+                    <img
+                        className="middlr"
+                        alt={this.props.venue.name}
+                        src={loadPreviewImage(this.props.venue)}/>
                 </div>
             </li>
         );
