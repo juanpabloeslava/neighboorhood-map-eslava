@@ -164,33 +164,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        
         <Map />
         {/* Sidebar */}
-        <section className="sidebar" id="sidebar">
-          <input
-            className="search-field"
-            placeholder="Search Restaurants by name"
-            value={this.state.query}
-            onChange={ event => { this.filterMyVenues(event.target.value) } } />
-            {
-              // Show a list of all the filtered venues according to the search query
-              <ul className="temp-venue-ul">
-                {this.state.filteredVenues && this.state.filteredVenues.length > 0 && (
-                  this.state.filteredVenues.map( venue => (
-                    <li 
-                    className="temp-venue-li" 
-                    key={venue.id}
-                    onClick={ () => { this.venueClick(venue) }} 
-                    onDoubleClick={ () => { this.venueDoubleclick(venue) }} 
-                    // onDoubleClick={this.venueDoubleClick(venue)}
-                    >
-                      {venue.name}
-                    </li>
-                  ))
-                )}
-              </ul>
-            }
-        </section>
+        <Sidebar
+          // state
+          query={this.state.query}
+          filteredVenues={this.state.filteredVenues}
+          // methods
+          filterMyVenues={this.filterMyVenues}
+          venueClick={this.venueClick}
+          venueDoubleclick={this.venueDoubleclick}
+        />
       </div>
     );
   }
