@@ -13,7 +13,9 @@ class App extends Component {
     // state
     this.state = {
       query: "",
+      // venues stores all the received venues
       venues: [],
+      // filteredVenues is a copy from all the venues, the one we modify and use to render
       filteredVenues: null
     }
   }
@@ -32,7 +34,6 @@ class App extends Component {
         console.log('All promises were resolved on Component Mount: ', resp)
         // store each returned promise into its own variable
         let google = resp[0];
-        
         // Component Properties (venues, map, google, markers, etc)
         this.venues = resp[1].response.venues;
         this.google = google;
@@ -75,28 +76,36 @@ class App extends Component {
           // push each marker to the Marker property on the component
           this.allMarkers.push(marker);
         });
-        this.setState( { venues: this.venues} );
+        this.setState( { 
+          // store in both state.venues and state.filteredVenues, but only state.filteredVenues will be modified
+          venues: this.venues,
+          filteredVenues: this.venues
+        });
         // console.log('App.allMarkers: ', this.allMarkers)
-        console.log('App.allMarkers: ', this.allMarkers)
-        console.log('this.venues: ', this.venues)
-        console.log('this.state.venues: ', this.state.venues)
+        // console.log('this.venues: ', this.venues)
+        // console.log('this.state.venues: ', this.state.venues)
       })
       .catch(error => {
-        console.log(error);
+        console.log('Error in initial promises: ', error);
       })
   }
 
   // METHODS
 
   // show Markers depending on the search query
-  searchForVenues(searchQuery) {
-    // go through each marker show only those that include the search query in their names and/or 
+  filterMyVenues(searchQuery) {
+    // filter venues list on the sidebar
+    let filteredVenues =  this.venues.filter( venue => (
+      venue.name.toLowerCase().includes(searchQuery.toLowerCase())
+    ));
+    // filter markers
     this.allMarkers.forEach(marker => {
       marker.name.toLowerCase().includes(searchQuery.toLowerCase()) ? marker.setVisible(true) : marker.setVisible(false);
     });
     // set state
     this.setState({
-      query: searchQuery
+      query: searchQuery,
+      filteredVenues: filteredVenues
     });
   }
 
@@ -112,12 +121,12 @@ class App extends Component {
             className="search-field"
             placeholder="Search Restaurants by name"
             value={this.state.query}
-            onChange={ event => { this.searchForVenues(event.target.value) } } />
+            onChange={ event => { this.filterMyVenues(event.target.value) } } />
             {
-              // Show a list of all the venues, that filters according to the search query
+              // Show a list of all the filtered venues according to the search query
               <ul className="temp-venue-ul">
-                {this.state.venues && this.state.venues.length > 0 && (
-                  this.state.venues.map( venue => (
+                {this.state.filteredVenues && this.state.filteredVenues.length > 0 && (
+                  this.state.filteredVenues.map( venue => (
                     <li className="temp-venue-li" key={venue.id}>
                       {venue.name}
                     </li>
