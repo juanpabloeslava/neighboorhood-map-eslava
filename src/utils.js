@@ -1,6 +1,6 @@
 // Google Maps
 export const loadGoogleMaps = () => {
-    return new Promise( resolve => {
+    return new Promise(resolve => {
         // define the global callback that will run when google maps is loaded
         window.resolveGoogleMapsPromise = function () {
             // resolve the google object
@@ -23,11 +23,8 @@ export const loadPreviewImage = (venue) => {
     const HEADING = '100';
     const PITCH = '3'
 
-    return `https://maps.googleapis.com/maps/api/streetview?size=250x250
-    &location=${venue.location.lat},${venue.location.lng}
-    &key=${MY_API_KEY}
-    &pitch=${PITCH}`;
-    
+    return `https://maps.googleapis.com/maps/api/streetview?size=250x250&location=${venue.location.lat},${venue.location.lng}&key=${MY_API_KEY}&pitch=${PITCH}`;
+
 }
 
 
@@ -36,7 +33,7 @@ export const loadPreviewImage = (venue) => {
 export const loadPlaces = () => {
     const MY_CLIENT_ID = 'HZIUFRTJYQEKW5K3CYVLKYROMWM4EMVT3HXNBG3PIRJWWLPK'
     const MY_CLIENT_SECRET = 'MKEFFYMS3255NVMSHVK4EZYMNOY5D3JFCCVQIBVGTTYS5EZJ'
-    let MY_VERSION ='20181207%20'
+    let MY_VERSION = '20181207%20'
     let near = 'Saarbrucken, Germany';
     let ll = '4.719243,-74.068181';
     let limit = '30';
@@ -51,9 +48,15 @@ export const loadPlaces = () => {
 
     return fetch(apiURL)
         // return the response as a JSON
-        .then( resp => resp.json())
+        .then(resp => resp.json())
         // catch the error
-        .catch( error => {
-            console.log ('load places error: ', error);
+        .catch(error => {
+            console.log('load places error: ', error);
         })
+}
+
+// test formating address
+
+export const stringArray = (array) => {
+    return array.join(", ");
 }

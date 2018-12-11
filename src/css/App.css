@@ -177,6 +177,13 @@ main {
   text-align: left;
   
 }
+.li_venue_img {
+  max-width: 100%;
+}
+.li_venue_info {
+  font-size: 14px;
+}
+
 
 #head-text {
   margin: 0px;

@@ -4,7 +4,7 @@ import './css/App.css';
 import Map from './components/Map'
 import Sidebar from './components/Sidebar'
 // utils
-import { loadGoogleMaps, loadPlaces } from './utils'
+import * as utils from './utils'
 
 class App extends Component {
 
@@ -22,8 +22,8 @@ class App extends Component {
 
   componentDidMount() {
     // get the map and locations
-    let google_map_promise = loadGoogleMaps();
-    let places_promise = loadPlaces();
+    let google_map_promise = utils.loadGoogleMaps();
+    let places_promise = utils.loadPlaces();
 
     // wait till it resolves all the following promises before actually doing anything
     Promise.all([
@@ -58,6 +58,14 @@ class App extends Component {
             name: venue.name,
             animation: google.maps.Animation.DROP
           });
+          // infowindow content
+          let infoWindowContent = `<div>
+                                    <h4>${venue.name}</h4>
+                                    <img class="li_venue_img" alt=${venue.name} src=${utils.loadPreviewImage(venue)}/>
+                                    <p  class="li_venue_info" id="li_venue_address">Address</p>
+                                    <p class="li_venue_info" id="li_venue_phone">Phone</p>
+                                    <p class="li_venue_info" id="li_venue_hours">Hours</p>
+                                  </div>`;
           // MARKER CLICK: show the infoWindows when clicking on a marker
           google.maps.event.addListener(marker, 'click', () => {
             // handle animation: if there's any animation going on, stop it. If not, just animate
@@ -68,7 +76,9 @@ class App extends Component {
             }
             setTimeout(() => { marker.setAnimation(null) }, 1000);
             // set content for info window and open it
-            this.infoWindow.setContent(marker.name);
+            // this.infoWindow.setContent(marker.name);
+            this.infoWindow.setContent(infoWindowContent);
+            
             this.infoWindow.open(this.map, marker);
           });
 
@@ -84,7 +94,7 @@ class App extends Component {
             // focus on clicked infoWindow
             this.map.setZoom(15);
             this.map.setCenter(marker.position);
-            this.map.panBy(-100, -100);
+            this.map.panBy(0, -100);
           });
           // push each marker to the Marker property on the component
           this.allMarkers.push(marker);
@@ -157,7 +167,7 @@ class App extends Component {
     // focus on clicked infoWindow
     this.map.setZoom(15);
     this.map.setCenter(clickedMarker.position);
-    this.map.panBy(-100, -100);
+    this.map.panBy(0, -100);
   }
 
   // RENDER
@@ -166,7 +176,7 @@ class App extends Component {
       <div className="App">
         <nav role="navigation">
           {/* <h1 class="homeTitle"><a href="/">Saarbrücken Map</a></h1> */}
-          <h1 class="homeTitle">Saarbrücken Map</h1>
+          <h1 className="homeTitle">Saarbrücken Map</h1>
           {/* <h1 class="skipTitle"><a href="#selecRestaurants" class="skipLink" aria-label="Skip to Content">Skip to main content</a></h1> */}
         </nav>
         <main>
