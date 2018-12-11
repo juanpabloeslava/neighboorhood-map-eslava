@@ -4,9 +4,7 @@ class Map extends Component {
 
     render() {
         return (
-            <main>
-                <div className="map" role="application" aria-hidden="true" id="map"></div>
-            </main>
+            <section className="map" role="application" aria-hidden="true" id="map"></section>
         );
     }
 }

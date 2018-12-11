@@ -61,10 +61,10 @@ class App extends Component {
           // MARKER CLICK: show the infoWindows when clicking on a marker
           google.maps.event.addListener(marker, 'click', () => {
             // handle animation: if there's any animation going on, stop it. If not, just animate
-            if (marker.getAnimation() !== null) { 
-              marker.setAnimation(null); 
-            } else { 
-              marker.setAnimation(google.maps.Animation.BOUNCE); 
+            if (marker.getAnimation() !== null) {
+              marker.setAnimation(null);
+            } else {
+              marker.setAnimation(google.maps.Animation.BOUNCE);
             }
             setTimeout(() => { marker.setAnimation(null) }, 1000);
             // set content for info window and open it
@@ -75,10 +75,10 @@ class App extends Component {
           // MARKER DOUBLE CLICK: re-center map and show infoWindow when double clicking on a marker
           google.maps.event.addListener(marker, 'dblclick', () => {
             // handle animation: if there's any animation going on, stop it. If not, just animate
-            if (marker.getAnimation() !== null) { 
-              marker.setAnimation(null); 
-            } else { 
-              marker.setAnimation(google.maps.Animation.BOUNCE); 
+            if (marker.getAnimation() !== null) {
+              marker.setAnimation(null);
+            } else {
+              marker.setAnimation(google.maps.Animation.BOUNCE);
             }
             setTimeout(() => { marker.setAnimation(null) }, 1000);
             // focus on clicked infoWindow
@@ -89,7 +89,7 @@ class App extends Component {
           // push each marker to the Marker property on the component
           this.allMarkers.push(marker);
         });
-        this.setState( { 
+        this.setState({
           // store in both state.venues and state.filteredVenues, but only state.filteredVenues will be modified
           venues: this.venues,
           filteredVenues: this.venues
@@ -108,7 +108,7 @@ class App extends Component {
   // show Markers depending on the search query
   filterMyVenues = (searchQuery) => {
     // filter venues list on the sidebar
-    let filteredVenues =  this.venues.filter( venue => (
+    let filteredVenues = this.venues.filter(venue => (
       venue.name.toLowerCase().includes(searchQuery.toLowerCase())
     ));
     // filter markers
@@ -125,15 +125,15 @@ class App extends Component {
   // click on a venue on the list
   venueClick = (venue) => {
     // get clicked marker as the only/first result of a filtered array
-    let clickedMarker = this.allMarkers.filter( marker => {
+    let clickedMarker = this.allMarkers.filter(marker => {
       return marker.id === venue.id
     })[0];
     // Open the venue's infowindow and animate the marker
     // handle animation: if there's any animation going on, stop it. If not, just animate
-    if (clickedMarker.getAnimation() !== null) { 
-      clickedMarker.setAnimation(null); 
-    } else { 
-      clickedMarker.setAnimation(this.google.maps.Animation.BOUNCE); 
+    if (clickedMarker.getAnimation() !== null) {
+      clickedMarker.setAnimation(null);
+    } else {
+      clickedMarker.setAnimation(this.google.maps.Animation.BOUNCE);
     }
     setTimeout(() => { clickedMarker.setAnimation(null) }, 1000);
     // set content for info window and open it
@@ -143,15 +143,15 @@ class App extends Component {
   // doubleclick on a venue on the list
   venueDoubleclick = (venue) => {
     // get clicked marker as the only/first result of a filtered array
-    let clickedMarker = this.allMarkers.filter( marker => {
+    let clickedMarker = this.allMarkers.filter(marker => {
       return marker.id === venue.id
     })[0];
     // Open the venue's infowindow and animate the marker
     // handle animation: if there's any animation going on, stop it. If not, just animate
-    if (clickedMarker.getAnimation() !== null) { 
-      clickedMarker.setAnimation(null); 
-    } else { 
-      clickedMarker.setAnimation(this.google.maps.Animation.BOUNCE); 
+    if (clickedMarker.getAnimation() !== null) {
+      clickedMarker.setAnimation(null);
+    } else {
+      clickedMarker.setAnimation(this.google.maps.Animation.BOUNCE);
     }
     setTimeout(() => { clickedMarker.setAnimation(null) }, 1000);
     // focus on clicked infoWindow
@@ -164,18 +164,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-        <Map />
-        {/* Sidebar */}
-        <Sidebar
-          // state
-          query={this.state.query}
-          filteredVenues={this.state.filteredVenues}
-          // methods
-          filterMyVenues={this.filterMyVenues}
-          venueClick={this.venueClick}
-          venueDoubleclick={this.venueDoubleclick}
-        />
+        <nav role="navigation">
+          {/* <h1 class="homeTitle"><a href="/">Saarbrücken Map</a></h1> */}
+          <h1 class="homeTitle">Saarbrücken Map</h1>
+          {/* <h1 class="skipTitle"><a href="#selecRestaurants" class="skipLink" aria-label="Skip to Content">Skip to main content</a></h1> */}
+        </nav>
+        <main>
+          {/* Sidebar */}
+          <Sidebar
+            // state
+            query={this.state.query}
+            filteredVenues={this.state.filteredVenues}
+            // methods
+            filterMyVenues={this.filterMyVenues}
+            venueClick={this.venueClick}
+            venueDoubleclick={this.venueDoubleclick}
+          />
+          <Map />
+        </main>
       </div>
     );
   }

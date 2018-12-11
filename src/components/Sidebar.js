@@ -37,13 +37,6 @@ class Sidebar extends Component {
                                     venueClick={this.props.venueClick}
                                     venueDoubleclick={this.props.venueDoubleclick}
                                 />
-                                // <li
-                                //     className="temp-venue-li"
-                                //     key={venue.id}
-                                //     onClick={() => { this.props.venueClick(venue) }}
-                                //     onDoubleClick={() => { this.props.venueDoubleclick(venue) }} >
-                                //     {venue.name}
-                                // </li>
                             ))
                         )}
                     </ul>

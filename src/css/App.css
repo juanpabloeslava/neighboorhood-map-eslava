@@ -8,11 +8,6 @@ body {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .venue-name {
   color: #007bff;
   text-decoration: none;
@@ -21,6 +16,13 @@ body {
 .venue-name:hover {
   color: #0056b3;
 }
+
+
+/* .App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
 
 .App-header {
   background-color: #222;
@@ -106,8 +108,13 @@ body {
   width: 100%;
   margin-top: 25vh;
   overflow: hidden;
-}
+} */
 
+/* MAIN */
+main {
+  display: flex;
+  flex-flow: row nowrap;
+}
 /* NAV BAR */
 
 .navbar {
@@ -127,20 +134,20 @@ body {
 /* SIDE BAR  */
 
 .sidebar {
-  position: absolute;
+  /* position: absolute; */
   z-index: 100;
   box-shadow: 0px 1px 1px grey;
   background: #f2f2f2;
-  width: 280px;
-  max-width: 280px;
+  width: 320px;
+  max-width: 320px;
   /* height: calc(100vh - 60px); */
   height: 100vh;
   overflow-y: scroll;
-  top: 0;
-  left: 0;
+  /* top: 0;
+  left: 0; */
   display: flex;
   flex-flow: column;
-  padding: 15px;
+  padding: 16px;
 }
 
 @media only screen and (max-width: 599px) {
