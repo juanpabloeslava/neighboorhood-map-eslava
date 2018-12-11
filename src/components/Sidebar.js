@@ -26,7 +26,7 @@ class Sidebar extends Component {
                     onChange={event => { this.props.filterMyVenues(event.target.value) }} />
                 {
                     // Show a list of all the filtered venues according to the search query
-                    <ul className="temp-venue-ul">
+                    <ul className="venue-list">
                         {this.props.filteredVenues && this.props.filteredVenues.length > 0 && (
                             this.props.filteredVenues.map(venue => (
                                 // Venue Item

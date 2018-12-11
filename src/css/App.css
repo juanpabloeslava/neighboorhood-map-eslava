@@ -108,18 +108,20 @@ body {
   overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 /* NAV BAR */
 
-#navbar {
+.navbar {
   position: relative;
   z-index: 100;
   box-shadow: 0px 1px 1px grey;
   background: black;
+}
+
+/* MAP */
+
+.map {
+  width: 100%;
+  height: 100vh;
 }
 
 /* SIDE BAR  */
@@ -130,8 +132,9 @@ body {
   box-shadow: 0px 1px 1px grey;
   background: #f2f2f2;
   width: 280px;
-  max-width: 100%;
-  height: calc(100vh - 60px);
+  max-width: 280px;
+  /* height: calc(100vh - 60px); */
+  height: 100vh;
   overflow-y: scroll;
   top: 0;
   left: 0;
@@ -140,10 +143,16 @@ body {
   padding: 15px;
 }
 
+@media only screen and (max-width: 599px) {
+  .sidebar {
+      width: 100%;
+      max-width: 100%;
+  }
+}
+
 .search-field {
-  /* width: 100%; */
   min-width: 90%;
-  /* max-width: 90%; */
+  max-width: 90%;
   padding: 0 8px;
   min-height: 48px;
   font-size: 15px;
@@ -151,9 +160,15 @@ body {
   margin-bottom: 12px;
 }
 
-#map {
-  width: 100%;
-  height: calc(100vh - 60px);
+.venue-list {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+.venue-listitem {
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  
 }
 
 #head-text {
@@ -221,13 +236,3 @@ body {
 
 
 /* temporary JP */
-.temp-venue-ul {
-  list-style-type: none;
-  padding-inline-start: 0;
-}
-.temp-venue-li {
-  border-bottom: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-  
-}

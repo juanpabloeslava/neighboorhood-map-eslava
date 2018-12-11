@@ -20,18 +20,13 @@ export const loadGoogleMaps = () => {
 // Google preview Image
 export const loadPreviewImage = (venue) => {
     const MY_API_KEY = 'AIzaSyB2Na2itdrdjtju2_vV0W2QLDrPevufc8U';
-    const HEADING = '150';
-    const PITCH = '-0.75'
-    var that = 'https://maps.googleapis.com/maps/api/streetview?size=150x150&location=' 
-        + venue.location.lat + ',' 
-        + venue.location.lng 
-        + '&heading=151.78&pitch=-0.76&key=AIzaSyB6N63ZIGH4b8Hgm9KhodA87Guuiem3C8Y'
+    const HEADING = '100';
+    const PITCH = '3'
 
-    return `https://maps.googleapis.com/maps/api/streetview?size=150x150&location=
-    ${venue.location.lat},${venue.location.lng}
-    &heading=${HEADING}
-    &pitch=${PITCH}
-    &key=${MY_API_KEY}`;
+    return `https://maps.googleapis.com/maps/api/streetview?size=250x250
+    &location=${venue.location.lat},${venue.location.lng}
+    &key=${MY_API_KEY}
+    &pitch=${PITCH}`;
     
 }
 
@@ -39,13 +34,20 @@ export const loadPreviewImage = (venue) => {
 
 // FourSquare things
 export const loadPlaces = () => {
-    let city = 'Saarbrucken, Germany';
-    let query = 'Restaurant';
     const MY_CLIENT_ID = 'HZIUFRTJYQEKW5K3CYVLKYROMWM4EMVT3HXNBG3PIRJWWLPK'
     const MY_CLIENT_SECRET = 'MKEFFYMS3255NVMSHVK4EZYMNOY5D3JFCCVQIBVGTTYS5EZJ'
-    let MY_VERSION ='20181207'
+    let MY_VERSION ='20181207%20'
+    let near = 'Saarbrucken, Germany';
+    let ll = '4.719243,-74.068181';
+    let limit = '30';
+    let query = 'Bar';
 
-    var apiURL = `https://api.foursquare.com/v2/venues/search?client_id=${MY_CLIENT_ID}&client_secret=${MY_CLIENT_SECRET}&v=${MY_VERSION}%20&limit=50&near=${city}&query=${query}`;
+    var apiURL = `https://api.foursquare.com/v2/venues/search?client_id=${MY_CLIENT_ID}
+    &client_secret=${MY_CLIENT_SECRET}
+    &v=${MY_VERSION}
+    &limit=${limit}
+    &near=${near}
+    &query=${query}`;
 
     return fetch(apiURL)
         // return the response as a JSON
