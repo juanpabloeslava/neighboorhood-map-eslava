@@ -22,8 +22,9 @@ export const loadPreviewImage = (venue) => {
     const MY_API_KEY = 'AIzaSyB2Na2itdrdjtju2_vV0W2QLDrPevufc8U';
     const HEADING = '100';
     const PITCH = '3'
-
-    return `https://maps.googleapis.com/maps/api/streetview?size=250x250&location=${venue.location.lat},${venue.location.lng}&key=${MY_API_KEY}&pitch=${PITCH}`;
+    const h = '300';
+    const w = '300';
+    return `https://maps.googleapis.com/maps/api/streetview?size=${w}x${h}&location=${venue.location.lat},${venue.location.lng}&key=${MY_API_KEY}&pitch=${PITCH}`;
 
 }
 
