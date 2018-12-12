@@ -24,11 +24,10 @@ class App extends Component {
     // get the map and locations
     let google_map_promise = utils.loadGoogleMaps();
     let places_promise = utils.loadPlaces();
-
     // wait till it resolves all the following promises before actually doing anything
     Promise.all([
       google_map_promise,
-      places_promise
+      places_promise,
     ])
       .then(resp => {
         console.log('All promises were resolved on Component Mount: ', resp)
@@ -49,6 +48,12 @@ class App extends Component {
 
         // venues
         this.venues.forEach(venue => {
+          // TEST FOR HOURS
+          // utils.getVenueHours(venue)
+          //   .then( (hoursResp) => {
+          //     console.log ('Hours: ', hoursResp);
+          //   });
+
           // create a marker for each venue
           let marker = new google.maps.Marker({
             position: { lat: venue.location.lat, lng: venue.location.lng },
