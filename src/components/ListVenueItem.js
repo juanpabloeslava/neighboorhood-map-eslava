@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // utils
-import { loadPreviewImage, stringArray } from '../utils'
+import { loadPreviewImage, showAddress } from '../utils'
 
 class ListVenueItem extends Component {
 
@@ -21,16 +21,8 @@ class ListVenueItem extends Component {
                     alt={this.props.venue.name}
                     src={loadPreviewImage(this.props.venue)}
                 />
-                {/* <p  className="li_venue_info" id="li_venue_address"><a>Address:</a> {this.props.venue.location.formattedAddress.toString()}</p> */}
-                {/* <p className="li_venue_info" label="address" id="li_venue_address">{stringArray(this.props.venue.location.formattedAddress)}</p> */}
                 <p className="li_venue_info" label="address" id="li_venue_address">
                     {
-                        // this.props.venue.location.formattedAddress.map( (value, index) => {
-                        //     return index === (this.props.venue.location.formattedAddress.length - 1) ?
-                        //     <span key={index}><span>{value}</span></span> :
-                        //     ( <span  key={index}><span>{value}</span><br/></span> )
-                        // })
-
                         this.props.venue.location.formattedAddress.map( address => {
                             return this.props.venue.location.formattedAddress.length === 1 ?
                             <span key={this.props.venue.id}>{address}</span> :

@@ -59,17 +59,6 @@ export const loadPlaces = () => {
         })
 }
 
-// test formating address
-// export const stringArray = (array) => {
-//     return array.join(', ');
-// }
-
-export const stringArray = (array) => {
-    let tempArray = array.join('\n');
-
-    return tempArray;
-}
-
 // get hours
 export const getVenueHours = (venue) => {
     const apiURL = `https://api.foursquare.com/v2/venues/${venue.id}/hours?client_id=${MY_CLIENT_ID}
@@ -86,7 +75,7 @@ export const getVenueHours = (venue) => {
 }
 
 // get hours (google)
-export const getVenueoHoursGoogle = (venue) => {
+export const getVenueoHoursGoogle = venue => {
 
 }
 
