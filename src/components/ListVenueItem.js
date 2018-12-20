@@ -22,7 +22,22 @@ class ListVenueItem extends Component {
                     src={loadPreviewImage(this.props.venue)}
                 />
                 {/* <p  className="li_venue_info" id="li_venue_address"><a>Address:</a> {this.props.venue.location.formattedAddress.toString()}</p> */}
-                <p className="li_venue_info" id="li_venue_address">Address: {stringArray(this.props.venue.location.formattedAddress)}</p>
+                {/* <p className="li_venue_info" label="address" id="li_venue_address">{stringArray(this.props.venue.location.formattedAddress)}</p> */}
+                <p className="li_venue_info" label="address" id="li_venue_address">
+                    {
+                        // this.props.venue.location.formattedAddress.map( (value, index) => {
+                        //     return index === (this.props.venue.location.formattedAddress.length - 1) ?
+                        //     <span key={index}><span>{value}</span></span> :
+                        //     ( <span  key={index}><span>{value}</span><br/></span> )
+                        // })
+
+                        this.props.venue.location.formattedAddress.map( address => {
+                            return this.props.venue.location.formattedAddress.length === 1 ?
+                            <span key={this.props.venue.id}>{address}</span> :
+                            <span key={this.props.venue.id}>{address}<br/></span> 
+                        })
+                    }
+                </p>
                 <p className="li_venue_info" id="li_venue_phone">Phone: </p>
                 <p className="li_venue_info" id="li_venue_hours">Hours: </p>
 

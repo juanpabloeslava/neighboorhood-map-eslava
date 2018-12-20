@@ -25,7 +25,7 @@ export const loadGoogleMaps = () => {
 
 // Google preview Image
 export const loadPreviewImage = (venue) => {
-    const MY_API_KEY = 'AIzaSyB2Na2itdrdjtju2_vV0W2QLDrPevufc8U';
+    // const MY_API_KEY = 'AIzaSyB2Na2itdrdjtju2_vV0W2QLDrPevufc8U';
     const HEADING = '100';
     const PITCH = '3'
     const h = '300';
@@ -60,11 +60,17 @@ export const loadPlaces = () => {
 }
 
 // test formating address
+// export const stringArray = (array) => {
+//     return array.join(', ');
+// }
+
 export const stringArray = (array) => {
-    return array.join(", ");
+    let tempArray = array.join('\n');
+
+    return tempArray;
 }
 
-// get address
+// get hours
 export const getVenueHours = (venue) => {
     const apiURL = `https://api.foursquare.com/v2/venues/${venue.id}/hours?client_id=${MY_CLIENT_ID}
     &client_secret=${MY_CLIENT_SECRET}
@@ -78,6 +84,10 @@ export const getVenueHours = (venue) => {
             console.log('load hours error: ', error);
         })
 }
-// get phone number
+
+// get hours (google)
+export const getVenueoHoursGoogle = (venue) => {
+
+}
 
 // get Hours   
