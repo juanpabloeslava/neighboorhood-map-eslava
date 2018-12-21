@@ -34,7 +34,18 @@ export const loadPreviewImage = (venue) => {
 
 }
 
+// Google places
+export const loadGooglePlaces = () => {
+    const apiURL = `https://maps.googleapis.com/maps/api/js?key=${MY_API_KEY}&libraries=places`
 
+    return fetch(apiURL)
+        // return the response as a JSON
+        .then(resp => resp.json())
+        // catch the error
+        .catch(error => {
+            console.log('load places error: ', error);
+        })
+}
 
 // FourSquare things
 export const loadPlaces = () => {

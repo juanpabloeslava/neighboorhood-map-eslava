@@ -12,7 +12,7 @@ class ListVenueItem extends Component {
                 onClick={() => { this.props.venueClick(this.props.venue) }}
                 onDoubleClick={() => { this.props.venueDoubleclick(this.props.venue) }}
             >
-                <h4 className="venue-name" alt={this.props.venue.name}>
+                <h4 className="venue-name" alt={this.props.venue.name} label={this.props.venue.name}>
                     {this.props.venue.name}
                 </h4>
 
@@ -31,7 +31,7 @@ class ListVenueItem extends Component {
                         })
                     }
                 </p>
-                <p className="li_venue_info" id="li_venue_phone">Phone: </p>
+                <p className="li_venue_info" id="li_venue_phone">Phone</p>
                 <p className="li_venue_info" id="li_venue_hours">Hours: </p>
 
             </li>
