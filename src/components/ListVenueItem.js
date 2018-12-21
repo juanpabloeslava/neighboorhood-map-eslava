@@ -23,10 +23,11 @@ class ListVenueItem extends Component {
                 />
                 <p className="li_venue_info" label="address" id="li_venue_address">
                     {
-                        this.props.venue.location.formattedAddress.map( address => {
+                        // map each element of the address array into their own span, and add linebreaks if needed
+                        this.props.venue.location.formattedAddress.map( (address, index) => {
                             return this.props.venue.location.formattedAddress.length === 1 ?
-                            <span key={this.props.venue.id}>{address}</span> :
-                            <span key={this.props.venue.id}>{address}<br/></span> 
+                            <span key={index}>{address}</span> :
+                            <span key={index}>{address}<br/></span> 
                         })
                     }
                 </p>

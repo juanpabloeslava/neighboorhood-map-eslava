@@ -222,6 +222,7 @@ main { display: flex; }
 }
 .li_venue_info {
   font-size: 14px;
+  text-align: left;
 }
 
 

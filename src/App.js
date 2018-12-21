@@ -67,7 +67,7 @@ class App extends Component {
           let infoWindowContent = `<div>
                                     <h4>${venue.name}</h4>
                                     <img class="li_venue_img" alt=${venue.name} src=${utils.loadPreviewImage(venue)}/>
-                                    <p  class="li_venue_info" id="li_venue_address">Address</p>
+                                    <p  class="li_venue_info" id="li_venue_address">${venue.location.formattedAddress.join(' <br> ')}</p>
                                     <p class="li_venue_info" id="li_venue_phone">Phone</p>
                                     <p class="li_venue_info" id="li_venue_hours">Hours</p>
                                   </div>`;
@@ -81,9 +81,7 @@ class App extends Component {
             }
             setTimeout(() => { marker.setAnimation(null) }, 1000);
             // set content for info window and open it
-            // this.infoWindow.setContent(marker.name);
             this.infoWindow.setContent(infoWindowContent);
-            
             this.infoWindow.open(this.map, marker);
           });
 
@@ -109,9 +107,6 @@ class App extends Component {
           venues: this.venues,
           filteredVenues: this.venues
         });
-        // console.log('App.allMarkers: ', this.allMarkers)
-        // console.log('this.venues: ', this.venues)
-        // console.log('this.state.venues: ', this.state.venues)
       })
       .catch(error => {
         console.log('Error in initial promises: ', error);
@@ -139,12 +134,19 @@ class App extends Component {
 
   // click on a venue on the list
   venueClick = (venue) => {
+    let infoWindowContent = `<div>
+                                <h4>${venue.name}</h4>
+                                <img class="li_venue_img" alt=${venue.name} src=${utils.loadPreviewImage(venue)}/>
+                                <p  class="li_venue_info" id="li_venue_address">${venue.location.formattedAddress.join(' <br> ')}</p>
+                                <p class="li_venue_info" id="li_venue_phone">Phone</p>
+                                <p class="li_venue_info" id="li_venue_hours">Hours</p>
+                              </div>`;
     // get clicked marker as the only/first result of a filtered array
     let clickedMarker = this.allMarkers.filter(marker => {
       return marker.id === venue.id
     })[0];
     // Open the venue's infowindow and animate the marker
-    // handle animation: if there's any animation going on, stop it. If not, just animate
+    // if there's any animation going on, stop it. If not, just animate
     if (clickedMarker.getAnimation() !== null) {
       clickedMarker.setAnimation(null);
     } else {
@@ -152,7 +154,9 @@ class App extends Component {
     }
     setTimeout(() => { clickedMarker.setAnimation(null) }, 1000);
     // set content for info window and open it
-    this.infoWindow.setContent(clickedMarker.name);
+
+    // this.infoWindow.setContent(clickedMarker.name);
+    this.infoWindow.setContent(infoWindowContent);
     this.infoWindow.open(this.map, clickedMarker);
   }
   // doubleclick on a venue on the list
