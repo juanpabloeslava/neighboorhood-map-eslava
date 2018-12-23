@@ -224,7 +224,11 @@ main { display: flex; }
   font-size: 14px;
   text-align: left;
 }
-
+.li_venue_info_link {
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
 
 #head-text {
   margin: 0px;

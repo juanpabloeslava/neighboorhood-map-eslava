@@ -48,7 +48,7 @@ export const loadGooglePlaces = () => {
         })
 }
 
-// FourSquare things
+// FourSquare venues
 export const loadPlaces = () => {
     let near = 'Saarbrucken, Germany';
     let ll = '4.719243,-74.068181';

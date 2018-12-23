@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // utils
-import { loadPreviewImage, showAddress } from '../utils'
+import { loadPreviewImage, getVenueHours } from '../utils'
 
 class ListVenueItem extends Component {
 
@@ -31,8 +31,18 @@ class ListVenueItem extends Component {
                         })
                     }
                 </p>
-                <p className="li_venue_info" id="li_venue_phone">Phone</p>
-                <p className="li_venue_info" id="li_venue_hours">Hours: </p>
+                <p className="li_venue_info_link venue-name"
+                    onClick={ () => { 
+                        window.open("https://www.google.com/search?q=" + this.props.venue.name + ' ' + this.props.venue.location.formattedAddress[this.props.venue.location.formattedAddress.length - 2], '_blank') 
+                    }}
+                    onKeyPress={ event => { 
+                        this.linkspanKeyEnter(event, this.props.venue) 
+                    }}
+                >
+                    Search on Google
+                </p>
+                {/* <p className="li_venue_info" id="li_venue_phone">Phone</p> */}
+                {/* <p className="li_venue_info" id="li_venue_hours">Hours: </p> */}
 
             </li>
         );
