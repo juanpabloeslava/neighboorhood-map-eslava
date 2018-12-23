@@ -23,8 +23,8 @@ class App extends Component {
   componentDidMount() {
     // get the map and locations
     let google_map_promise = utils.loadGoogleMaps();
-    // let places_promise = utils.loadPlaces();
-    let places_promise = utils.loadGooglePlaces();
+    let places_promise = utils.loadPlaces();
+    // let places_promise = utils.loadGooglePlaces();
     
     // wait till it resolves all the following promises before actually doing anything
     Promise.all([

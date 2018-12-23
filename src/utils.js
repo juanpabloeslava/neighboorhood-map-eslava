@@ -35,6 +35,7 @@ export const loadPreviewImage = (venue) => {
 }
 
 // Google places
+// will come back to this later
 export const loadGooglePlaces = () => {
     const apiURL = `https://maps.googleapis.com/maps/api/js?key=${MY_API_KEY}&libraries=places`
 
