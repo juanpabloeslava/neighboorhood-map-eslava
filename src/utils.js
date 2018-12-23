@@ -25,8 +25,7 @@ export const loadGoogleMaps = () => {
 
 // Google preview Image
 export const loadPreviewImage = (venue) => {
-    // const MY_API_KEY = 'AIzaSyB2Na2itdrdjtju2_vV0W2QLDrPevufc8U';
-    const HEADING = '100';
+    // const HEADING = '100';
     const PITCH = '3'
     const h = '300';
     const w = '300';
@@ -51,7 +50,7 @@ export const loadGooglePlaces = () => {
 // FourSquare venues
 export const loadPlaces = () => {
     let near = 'Saarbrucken, Germany';
-    let ll = '4.719243,-74.068181';
+    // let ll = '4.719243,-74.068181';
     let limit = '40';
     let query = 'Bar';
 

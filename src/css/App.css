@@ -9,28 +9,19 @@ body {
 }
 
 .venue-name {
-  color: #007bff;
+  color: #0c61bd;
   text-decoration: none;
   background-color: transparent;
 }
 .venue-name:hover {
-  color: #0056b3;
+  color: #0355ad;
 }
 
-
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.text-strong {
+  font-weight: 450;
 }
 
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
+/* 
 .App-title {
   font-size: 1.5em;
 }
@@ -116,7 +107,7 @@ body {
   position: relative;
   z-index: 100;
   box-shadow: 0px 1px 1px grey;
-  background: black;
+  /* background: black; */
 }
 
 /* MAIN */

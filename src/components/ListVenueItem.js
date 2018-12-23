@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // utils
-import { loadPreviewImage, getVenueHours } from '../utils'
+import { loadPreviewImage } from '../utils'
 
 class ListVenueItem extends Component {
 
