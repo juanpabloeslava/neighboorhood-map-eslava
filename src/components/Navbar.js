@@ -24,7 +24,6 @@ class Navbar extends Component {
                 <div className="nav-title">
                     <h1  tabIndex="0" className="homeTitle" aria-label="Saarbruecken Bars">Saarbrücken Bars</h1>
                 </div>
-                {/* <h1 class="skipTitle"><a href="#selecRestaurants" class="skipLink" aria-label="Skip to Content">Skip to main content</a></h1> */}
             </nav>
         );
     }

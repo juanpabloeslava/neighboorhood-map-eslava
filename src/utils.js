@@ -70,7 +70,7 @@ export const loadPlaces = () => {
         })
 }
 
-// get hours
+// get hours --> not using it, have no credit
 export const getVenueHours = (venue) => {
     const apiURL = `https://api.foursquare.com/v2/venues/${venue.id}/hours?client_id=${MY_CLIENT_ID}
     &client_secret=${MY_CLIENT_SECRET}
@@ -89,5 +89,3 @@ export const getVenueHours = (venue) => {
 export const getVenueoHoursGoogle = venue => {
 
 }
-
-// get Hours   
