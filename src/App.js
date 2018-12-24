@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/App.css';
 // components
-import Map from './components/Map'
+import Map from './components/Map2'
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 // utils
