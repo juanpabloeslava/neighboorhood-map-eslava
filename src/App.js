@@ -14,6 +14,7 @@ class App extends Component {
     // state
     this.state = {
       query: "",
+      sideBarShow: true,
       // venues stores all the received venues
       venues: [],
       // filteredVenues is a copy from all the venues, the one we modify and use to render
@@ -26,7 +27,7 @@ class App extends Component {
     let google_map_promise = utils.loadGoogleMaps();
     let places_promise = utils.loadPlaces();
     // let places_promise = utils.loadGooglePlaces();
-    
+
     // wait till it resolves all the following promises before actually doing anything
     Promise.all([
       google_map_promise,
@@ -120,9 +121,9 @@ class App extends Component {
 
   // search venue on google
   googleSearchVenue = (venue) => {
-    window.open ("https://www.google.com/search?q=" + 
-    venue.name + ' ' + 
-    venue.location.formattedAddress[venue.location.formattedAddress.length - 2], '_blank') 
+    window.open("https://www.google.com/search?q=" +
+      venue.name + ' ' +
+      venue.location.formattedAddress[venue.location.formattedAddress.length - 2], '_blank')
   }
 
   // show Markers depending on the search query
@@ -188,17 +189,29 @@ class App extends Component {
     this.map.panBy(0, -100);
   }
 
+  toogleSidebar = () => {
+    this.setState(state => (
+      { sideBarShow: !state.sideBarShow })
+    );
+    console.log('sideBarShow: ', this.state.sideBarShow);
+  }
+
   // RENDER
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Navbar
+          // state
+          sideBarShow={this.state.sideBarShow}
+          // methods
+          toogleSidebar={this.toogleSidebar}
+        />
         <main>
-          {/* Sidebar */}
           <Sidebar
             // state
             query={this.state.query}
             filteredVenues={this.state.filteredVenues}
+            sideBarShow={this.state.sideBarShow}
             // methods
             filterMyVenues={this.filterMyVenues}
             venueClick={this.venueClick}
@@ -206,6 +219,8 @@ class App extends Component {
           />
           <Map />
         </main>
+
+
       </div>
     );
   }

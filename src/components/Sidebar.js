@@ -4,18 +4,6 @@ import ListVenueItem from './ListVenueItem'
 
 class Sidebar extends Component {
 
-    constructor(props) {
-        super(props);
-        // state
-        this.state = {
-            sideBarOpen: true
-        }
-    }
-
-    componentDidMount () {
-        console.log ('Sidebar mounted correctly');
-    }
-
     render() {
         return (
             <section className="sidebar" id="sidebar">
@@ -30,7 +18,7 @@ class Sidebar extends Component {
                         {this.props.filteredVenues && this.props.filteredVenues.length > 0 && (
                             this.props.filteredVenues.map(venue => (
                                 // Venue Item
-                                <ListVenueItem 
+                                <ListVenueItem
                                     venue={venue}
                                     key={venue.id}
                                     // methods
@@ -43,6 +31,7 @@ class Sidebar extends Component {
                 }
             </section>
         );
+       
     }
 }
 

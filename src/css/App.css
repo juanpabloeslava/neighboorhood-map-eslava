@@ -164,7 +164,6 @@ main { display: flex; }
 }
 
 /* SIDE BAR  */
-
 .sidebar {
   display: flex;
   z-index: 100;
@@ -198,6 +197,9 @@ main { display: flex; }
       width: 100%;
       max-width: 320px;
   }
+}
+.sidebar-hidden {
+  display: none;
 }
 
 .search-field {

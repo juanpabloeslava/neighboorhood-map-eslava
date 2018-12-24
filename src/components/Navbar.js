@@ -4,23 +4,19 @@ import MaterialIcon from 'react-google-material-icons'
 
 class Navbar extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     // state
-    //     this.state = {
-    //         sideBarOpen: true
-    //     }
-    // }
-
-    componentDidMount() {
-        console.log('Navbar mounted correctly');
-    }
-
     render() {
         return (
             <nav role="navigation" className="navbar">
-                <div className="nav-icon">
-                    <MaterialIcon icon="menu" size={36}/>
+                <div className="nav-icon"
+                    onClick={() => {
+                        this.props.toogleSidebar()
+                    }}
+                >
+                    { 
+                        this.props.sideBarShow ? 
+                        <MaterialIcon icon="menu" size={36}/> :
+                        <MaterialIcon icon="clear" size={36}/> 
+                    }
                 </div>
                 <div className="nav-title">
                     <h1 className="homeTitle" label="Saarbruecken Bars">Saarbrücken Bars</h1>
