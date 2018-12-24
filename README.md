@@ -1,8 +1,20 @@
+# Memory Game Project 
+Juan Pablo Eslava
+
+## 0. About the Project
+This game is the 8th project for Udacity's Front End Developer Nanodegree Program, which started on February 2018.
+
+This is a single page app that helps you locate the best bars in Saarbrücken, Germany.
+
+### IMPORTANT NOTE:
+
+**For security measures, the API Keys for both the Google Maps API and the FoursQuare API have been removed from this repository. Please be sure to replace them where indicated in the `utils.js` file**
+
+## 1. Create React App
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
+To run the project, you can run:
 
 ### `npm start`
 
@@ -37,16 +49,20 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-# Juan Pablo's Doku
+## 2. FourSquare API
 
-## 1. install maps
-https://tomchentw.github.io/react-google-maps/#installation
+This project was build using the Foursquare API, to get information about the bars.
+For more information about FourSquare, please visit [their official site.](https://developer.foursquare.com/)
 
-## 2. Material Icons
-https://www.npmjs.com/package/react-google-material-icons
+## 3. Material Icons
+This project also made use of Google's [Material Design Icons](https://material.io/tools/icons/?style=baseline), which were added to the project through the [react-google-material-icons](https://www.npmjs.com/package/react-google-material-icons) library.
+
+## 4. License
+
+This project is licensed under the MIT License - see the `LICENSE.md` file for details
