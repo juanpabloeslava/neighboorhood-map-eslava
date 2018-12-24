@@ -1,6 +1,6 @@
 /* Caches variables */
 
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 2;
 const STATIC_CACHE = `static-cache-v${CACHE_VERSION}`;
 const IMAGES_CACHE = `images-cache-v`;
 const allCaches = [
