@@ -47,3 +47,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## 1. install maps
 https://tomchentw.github.io/react-google-maps/#installation
+
+## 2. Material Icons
+https://www.npmjs.com/package/react-google-material-icons
