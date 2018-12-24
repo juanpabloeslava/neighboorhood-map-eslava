@@ -7,8 +7,11 @@ class Navbar extends Component {
     render() {
         return (
             <nav role="navigation" className="navbar">
-                <div className="nav-icon"
+                <div className="nav-icon" tabIndex="0"
                     onClick={() => {
+                        this.props.toogleSidebar()
+                    }}
+                    onKeyPress={() => {
                         this.props.toogleSidebar()
                     }}
                 >
@@ -19,7 +22,7 @@ class Navbar extends Component {
                     }
                 </div>
                 <div className="nav-title">
-                    <h1 className="homeTitle" label="Saarbruecken Bars">Saarbrücken Bars</h1>
+                    <h1  tabIndex="0" className="homeTitle" aria-label="Saarbruecken Bars">Saarbrücken Bars</h1>
                 </div>
                 {/* <h1 class="skipTitle"><a href="#selecRestaurants" class="skipLink" aria-label="Skip to Content">Skip to main content</a></h1> */}
             </nav>

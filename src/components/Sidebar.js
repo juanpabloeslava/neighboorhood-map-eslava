@@ -4,12 +4,18 @@ import ListVenueItem from './ListVenueItem'
 
 class Sidebar extends Component {
 
+    // componentDidMount () {
+    //     this.displayStyle = this.props.sideBarShow ? 'flex' : 'none';
+    // }
+
     render() {
+        let sidebarStyle = this.props.sideBarShow ? "flex" : "none";
         return (
-            <section className="sidebar" id="sidebar">
+            <section className="sidebar" id="sidebar" style={{ display: sidebarStyle }}>
                 <input
                     className="search-field"
                     placeholder="Search Restaurants by name"
+                    aria-label="Search Restaurants"
                     value={this.props.query}
                     onChange={event => { this.props.filterMyVenues(event.target.value) }} />
                 {

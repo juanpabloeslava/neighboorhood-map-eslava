@@ -219,8 +219,6 @@ class App extends Component {
           />
           <Map />
         </main>
-
-
       </div>
     );
   }
