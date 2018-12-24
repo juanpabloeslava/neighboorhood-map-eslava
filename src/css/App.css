@@ -104,10 +104,22 @@ body {
 /* NAV BAR */
 
 .navbar {
-  position: relative;
+  /* position: relative;
   z-index: 100;
-  box-shadow: 0px 1px 1px grey;
-  /* background: black; */
+  box-shadow: 0px 1px 1px grey; */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar .nav-icon {
+  padding: 0 15px;
+  align-items: center;
+  justify-self: flex-start;
+}
+.navbar .nav-title {
+  width: 100%;
+  align-items: center;
 }
 
 /* MAIN */

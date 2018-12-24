@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './css/App.css';
 // components
-import Map from './components/map.js'
+import Map from './components/Map'
 import Sidebar from './components/Sidebar'
+import Navbar from './components/Navbar'
 // utils
 import * as utils from './utils'
 
@@ -191,11 +192,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav role="navigation">
-          {/* <h1 class="homeTitle"><a href="/">Saarbrücken Map</a></h1> */}
-          <h1 className="homeTitle">Saarbrücken Map</h1>
-          {/* <h1 class="skipTitle"><a href="#selecRestaurants" class="skipLink" aria-label="Skip to Content">Skip to main content</a></h1> */}
-        </nav>
+        <Navbar />
         <main>
           {/* Sidebar */}
           <Sidebar
