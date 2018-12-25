@@ -76,7 +76,7 @@ export const loadPlaces = () => {
         // catch the error
         .catch(error => {
             console.log('load places error: ', error);
-            alert ('Sorry, it appears to be an error while fetching the Foursquare data');
+            alert ('Sorry, it appears to be an error while fetching the Foursquare data: ', error);
         })
 }
 
