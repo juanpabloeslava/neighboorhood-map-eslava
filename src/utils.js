@@ -2,7 +2,8 @@
 // const MY_API_KEY = 'YOUR_API_KEY';
 const MY_API_KEY = 'AIzaSyB2Na2itdrdjtju2_vV0W2QLDrPevufc8U';
 // variables Foursquare
-// const MY_CLIENT_ID = 'YOUR_CLIENT_SECRET';
+// const MY_CLIENT_ID = 'YOUR_CLIENT_ID';
+// const MY_CLIENT_SECRET = 'YOUR_CLIENT_SECRET';
 const MY_CLIENT_ID = 'HZIUFRTJYQEKW5K3CYVLKYROMWM4EMVT3HXNBG3PIRJWWLPK';
 const MY_CLIENT_SECRET = 'MKEFFYMS3255NVMSHVK4EZYMNOY5D3JFCCVQIBVGTTYS5EZJ';
 let MY_VERSION = '20181207%20';
@@ -11,7 +12,8 @@ let MY_VERSION = '20181207%20';
 export const loadGoogleMaps = () => {
     return new Promise(resolve => {
         // define the global callback that will run when google maps is loaded
-        window.resolveGoogleMapsPromise = function () {
+        // on success
+        window.resolveGoogleMapsPromise = () => {
             // resolve the google object
             resolve(window.google);
             // delete the global callback to tidy up since it is no longer needed
@@ -21,8 +23,16 @@ export const loadGoogleMaps = () => {
         const script = document.createElement("script");
         script.src = `https://maps.googleapis.com/maps/api/js?libraries=places&key=${MY_API_KEY}&callback=resolveGoogleMapsPromise`;
         script.async = true;
+        // on error
+        script.onerror = (error) => {
+            alert ('Sorry, there was an error loading the Google Maps data');
+        };
         document.body.appendChild(script);
     });
+}
+
+export const loadGoogleMaps2 = () => {
+    
 }
 
 // Google preview Image
@@ -69,6 +79,7 @@ export const loadPlaces = () => {
         // catch the error
         .catch(error => {
             console.log('load places error: ', error);
+            alert ('Sorry, it appears to be an error while fetching the Foursquare data');
         })
 }
 

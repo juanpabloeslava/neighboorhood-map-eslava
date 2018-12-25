@@ -114,6 +114,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log('Error in initial promises: ', error);
+        alert('error loading resources');
       })
   }
 
