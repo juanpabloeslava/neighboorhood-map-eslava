@@ -11,6 +11,7 @@ class ListVenueItem extends Component {
                 role="contentinfo"
                 tabIndex="0"
                 // methods
+                onFocus={() => { this.props.venueClick(this.props.venue) }}
                 onClick={() => { this.props.venueClick(this.props.venue) }}
                 onDoubleClick={() => { this.props.venueDoubleclick(this.props.venue) }}
             >
