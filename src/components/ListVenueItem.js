@@ -8,6 +8,8 @@ class ListVenueItem extends Component {
         return (
             <li
                 className="venue-listitem"
+                role="contentinfo"
+                tabIndex="0"
                 // methods
                 onClick={() => { this.props.venueClick(this.props.venue) }}
                 onDoubleClick={() => { this.props.venueDoubleclick(this.props.venue) }}
