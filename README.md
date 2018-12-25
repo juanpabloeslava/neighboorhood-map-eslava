@@ -1,4 +1,4 @@
-# Memory Game Project 
+# Neighborhood Map Project: Saarbrücken Maps
 Juan Pablo Eslava
 
 ## 0. About the Project
