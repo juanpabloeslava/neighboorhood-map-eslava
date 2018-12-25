@@ -71,7 +71,7 @@ class App extends Component {
           let infoWindowContent = `<div>
                                     <h4>${venue.name}</h4>
                                     <img class="li_venue_img" alt=${venue.name} src=${utils.loadPreviewImage(venue)}/>
-                                    <p  class="li_venue_info text-strong" id="li_venue_address">${venue.location.formattedAddress.join(' <br> ')}</p>                                     
+                                    <p  class="li_venue_info text-strong">${venue.location.formattedAddress.join(' <br> ')}</p>                                     
                                     <a target="_blank" class="li_venue_info_link venue-name text-strong" id="li_venue_address" href="https://www.google.com/search?q${venue.name}">Search on Google</a>
                                   </div>`;
           // MARKER CLICK: show the infoWindows when clicking on a marker
